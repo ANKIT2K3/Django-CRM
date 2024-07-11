@@ -1,13 +1,14 @@
-import mysql.connector 
+import pymysql
 
-
-dataBase=mysql.connector.connect(
+connection = pymysql.connect(
     host='localhost',
     user='root',
-    passwd='AJ2K26@Raj',
+    password='AJ2K26@Raj',
+    database='projectdb'
 )
-#prepare a cursor object
-cursorObject=dataBase.cursor()
-#create a datbase
-cursorObject.execute("CREATE Projectdb")
-print("All DOne")
+
+cursor = connection.cursor()
+cursor.execute("SELECT * FROM your_table")
+result = cursor.fetchall()
+print(result)
+connection.close()
